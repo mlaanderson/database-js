@@ -1,5 +1,5 @@
 {
-  "name": "database-js",
+  "name": "database-node",
   "version": "0.0.1",
   "description": "Common Database Interface",
   "main": "index.js",
@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/mlaanderson/database-js#readme",
   "devDependencies": {
+    "adodb": "^1.0.0",
+    "firebase": "^4.1.3",
     "mysql": "^2.13.0",
+    "mysql-promise-wrapper": "^1.0.0",
     "node-adodb": "^3.0.3",
     "pg": "^7.0.1"
   }
