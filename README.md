@@ -66,7 +66,7 @@ var Database = require('database-js2');
 
 (async function() {
     let connection, statement, rows;
-    connection = new Database('database-js-adodb:///C:\\Users\\me\\Desktop\\database.xls??Extended Properties='Excel 8.0;HDR=Yes;IMEX=1';');
+    connection = new Database('database-js-adodb:///C:\\Users\\me\\Desktop\\database.xls?Extended Properties='Excel 8.0;HDR=Yes;IMEX=1';');
 
     try {
         statement = await connection.prepareStatement("SELECT * FROM [Sheet1$A1:C52] WHERE State = ?");
@@ -165,3 +165,6 @@ module.exports = {
     }
 };
 ~~~~
+
+## Adding SQL interfaces to non-SQL data stores
+The [database-js-firebase](https://github.com/mlaanderson/database-js-firebase) wrapper is an example of adding an SQL interface to a data store that is not SQL based. It uses [node-sqlparser](https://www.npmjs.com/package/node-sqlparser) by fish to parse the SQL statement into an object which is easy to work with. Someone could easily create a wrapper around an HTTP server, or even create an SQL interface to IoT sensors.
