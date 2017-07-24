@@ -23,6 +23,7 @@
     "adodb": "^1.0.0",
     "database-js-adodb": "^1.0.0",
     "database-js-firebase": "^1.0.0",
+    "database-js-ini": "git+https://github.com/mlaanderson/database-js-ini.git",
     "database-js-mysql": "^1.0.0",
     "firebase": "^4.1.3",
     "mysql": "^2.13.0",

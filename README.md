@@ -21,7 +21,7 @@ Where the root node is the path to the parent of the entries you define as table
 ### Usage
 #### MySQL Example
 ~~~~
-var Database = require('database-js2');
+var Database = require('database-js2').Connection;
 
 (async function() {
     let connection, statement, rows;
@@ -41,7 +41,7 @@ var Database = require('database-js2');
 
 #### MS Access Example
 ~~~~
-var Database = require('database-js2');
+var Database = require('database-js2').Connection;
 
 (async function() {
     let connection, statement, rows;
@@ -62,7 +62,7 @@ var Database = require('database-js2');
 
 #### MS Excel Example
 ~~~~
-var Database = require('database-js2');
+var Database = require('database-js2').Connection;
 
 (async function() {
     let connection, statement, rows;
@@ -83,7 +83,7 @@ var Database = require('database-js2');
 #### Firebase Example
 The username and password is not the Firebase account holder's email and password. These are the login credentials for an authorized user of the Firebase data. Currently the wrapper only supports [email sign in methods](https://firebase.google.com/docs/auth/web/password-auth).
 ~~~~
-var Database = require('database-js2');
+var Database = require('database-js2').Connection;
 
 (async function() {
     let connection, statement, rows;
