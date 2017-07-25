@@ -101,6 +101,27 @@ var Database = require('database-js2').Connection;
 })();
 ~~~~
 
+#### SQLite Example
+Memory only SQLite databases are not yet supported, a filename must be passed.
+~~~~
+var Database = require('database-js2').Connection;
+
+(async () => {
+    let connection, statement, rows;
+    connection = new Database('database-js-sqlite:///test.sqlite');
+    
+    try {
+        statement = await connection.prepareStatement("SELECT * FROM tablea WHERE user_name = ?");
+        rows = await statement.query('not_so_secret_user');
+        console.log(rows);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await connection.close();
+    }
+})();
+~~~~
+
 ## Extending
 Writing a new wrapper around an existing database implementation in Node is fairly straight forward. The [database-js-mysql](https://github.com/mlaanderson/database-js-mysql) wrapper is a good place to start. Generally the pattern will be like this:
 ~~~~
