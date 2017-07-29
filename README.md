@@ -88,7 +88,7 @@ The username and password is not the Firebase account holder's email and passwor
 
 This example is live, but read-only, if you install the normal [Firebase](https://www.npmjs.com/package/firebase) package, you can use the API key and credentials below to examine the data the Firebase way and compare it to this SQL wrapper.
 
-Try this in the [browser with RunKit](https://runkit.com/embed/00z4s0ylyx82)
+Try this in the [browser with RunKit](https://runkit.com/mlaanderson/runkit-npm-database-js2)
 ~~~~
 var Database = require('database-js2').Connection;
 
