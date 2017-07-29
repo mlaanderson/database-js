@@ -115,8 +115,8 @@ var Database = require('database-js2').Connection;
     connection = new Database('database-js-sqlite:///test.sqlite');
     
     try {
-        statement = await connection.prepareStatement("SELECT * FROM tablea WHERE user_name = ?");
-        rows = await statement.query('not_so_secret_user');
+        statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
+        rows = await statement.query('South Dakota');
         console.log(rows);
     } catch (error) {
         console.log(error);
