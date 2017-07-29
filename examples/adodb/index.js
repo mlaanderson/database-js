@@ -5,7 +5,7 @@ var Database = require('database-js2').Connection;
     let statement, results;
 
     try {
-        statement = await connection.prepare("SELECT * FROM [Sheet1$A1:C52] WHERE State = ?");
+        statement = await connection.prepareStatement("SELECT * FROM [Sheet1$A1:C52] WHERE State = ?");
         results = await statement.query('South Dakota');
         console.log(results);
     } catch (err) {
