@@ -20,16 +20,10 @@
   },
   "homepage": "https://github.com/mlaanderson/database-js#readme",
   "devDependencies": {
-    "adodb": "^1.0.0",
     "database-js-adodb": "^1.0.0",
     "database-js-firebase": "^1.0.0",
     "database-js-ini": "git+https://github.com/mlaanderson/database-js-ini.git",
     "database-js-mysql": "^1.0.0",
-    "database-js-sqlite": "git+https://github.com/mlaanderson/database-js-sqlite.git",
-    "firebase": "^4.1.3",
-    "mysql": "^2.13.0",
-    "mysql-promise-wrapper": "^1.0.0",
-    "node-adodb": "^3.0.3",
-    "pg": "^7.0.1"
+    "database-js-sqlite": "^1.0.3"
   }
 }
