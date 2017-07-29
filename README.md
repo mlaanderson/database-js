@@ -89,11 +89,11 @@ var Database = require('database-js2').Connection;
 
 (async function() {
     let connection, statement, rows;
-    connection = new Database('database-js-firebase://user@example.com:secret_password@project_id/root_path?apiKey=MY_API_KEY');
+    connection = new Database('database-js-firebase://user@example.com:password@statesdemo/ewJviY6wboTKJ57A2dZkvq8kxYo1?apiKey=AIzaSyD1ypTmnJb_d8ZOyfc-KBMe0tw8owYCwjA');
 
     try {
-        statement = await connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-        rows = await statement.query('Donald Duck');
+        statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
+        rows = await statement.query('South Dakota');
         console.log(rows);
     } catch (error) {
         console.log(error);
