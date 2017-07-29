@@ -9,11 +9,13 @@ Database-js uses the concept of a connection string. The format of the string is
 `driver://[[[username]:[password]@]host]/database[?other parameters]`
 
 Since drivers must have a common interface, there are a few wrappers around drivers:
-#### MySQL Driver
+#### [MySQL Driver](https://github.com/mlaanderson/database-js-mysql)
 `database-js-mysql://[[username]:[password]@]host/database`
-#### ADODB
+#### [ADODB](https://github.com/mlaanderson/database-js-adodb)
 `database-js-adodb:///file_path[?parameters]`
-#### Firebase
+#### [SQLite](https://github.com/mlaanderson/database-js-sqlite)
+`database-js-sqlite:///file_path`
+#### [Firebase](https://github.com/mlaanderson/database-js-firebase)
 Yes, it is an SQL wrapper for a NoSQL database.
 `database-js-firebase://username:password@project_id/root_node?apiKey=API_KEY`
 Where the root node is the path to the parent of the entries you define as tables. The project ID and API key can get found in your Firebase console.
