@@ -63,6 +63,7 @@ var Database = require('database-js2').Connection;
 
 
 #### MS Excel Example
+The example XLS file is included in this package.
 ~~~~
 var Database = require('database-js2').Connection;
 
@@ -84,6 +85,7 @@ var Database = require('database-js2').Connection;
 
 #### Firebase Example
 The username and password is not the Firebase account holder's email and password. These are the login credentials for an authorized user of the Firebase data. Currently the wrapper only supports [email sign in methods](https://firebase.google.com/docs/auth/web/password-auth).
+This example is live, but read-only, if you install the normal [Firebase](https://www.npmjs.com/package/firebase) package, you can use the API key and credentials below to examine the data the Firebase way and compare it to this SQL wrapper.
 ~~~~
 var Database = require('database-js2').Connection;
 
@@ -104,7 +106,7 @@ var Database = require('database-js2').Connection;
 ~~~~
 
 #### SQLite Example
-Memory only SQLite databases are not yet supported, a filename must be passed.
+Memory only SQLite databases are not yet supported, a filename must be passed. The example database is included in this package, so this should be able to run.
 ~~~~
 var Database = require('database-js2').Connection;
 
