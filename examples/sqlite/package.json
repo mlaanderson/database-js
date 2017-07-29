@@ -1,0 +1,15 @@
+{
+  "name": "sqlite",
+  "version": "1.0.0",
+  "description": "SQLite example for database-js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Michael Anderson",
+  "license": "MIT",
+  "dependencies": {
+    "database-js-sqlite": "^1.0.3",
+    "database-js2": "^0.1.5"
+  }
+}
