@@ -1,0 +1,15 @@
+{
+  "name": "mysql",
+  "version": "1.0.0",
+  "description": "MySQL example for database-js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Michael Anderson",
+  "license": "MIT",
+  "dependencies": {
+    "database-js-mysql": "^1.0.1",
+    "database-js2": "^0.2.0"
+  }
+}
