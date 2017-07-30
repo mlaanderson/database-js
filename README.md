@@ -12,7 +12,9 @@ Database-js uses the concept of a connection string. The format of the string is
 
 Since drivers must have a common interface, there are a few wrappers around drivers:
 #### [MySQL Driver](https://github.com/mlaanderson/database-js-mysql)
-`database-js-mysql://[[username]:[password]@]host/database`
+`database-js-mysql://[[username]:[password]@]host[:port]/database`
+#### [PostgreSQL Driver](https://github.com/mlaanderson/database-js-postgres)
+`database-js-postgres://[[username]:[password]@]host[:port]/database`
 #### [ADODB](https://github.com/mlaanderson/database-js-adodb)
 `database-js-adodb:///file_path[?parameters]`
 #### [SQLite](https://github.com/mlaanderson/database-js-sqlite)
@@ -30,6 +32,26 @@ var Database = require('database-js2').Connection;
 (async function() {
     let connection, statement, rows;
     connection = new Database('database-js-mysql://my_secret_username:my_secret_password@localhost:3306/my_top_secret_database');
+
+    try {
+        statement = await connection.prepareStatement("SELECT * FROM tablea WHERE user_name = ?");
+        rows = await statement.query('not_so_secret_user');
+        console.log(rows);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await connection.close();
+    }
+})();
+~~~~
+
+#### PostgreSQL Example
+~~~~
+var Database = require('database-js2').Connection;
+
+(async function() {
+    let connection, statement, rows;
+    connection = new Database('database-js-postgres://my_secret_username:my_secret_password@localhost:5432/my_top_secret_database');
 
     try {
         statement = await connection.prepareStatement("SELECT * FROM tablea WHERE user_name = ?");
