@@ -1,17 +1,16 @@
 var Database = require('.').Connection;
 
-(async function () { 
-    let dbUrl = `database-js-sqlite:///test.sqlite`;
-    let db = new Database(dbUrl);
-    let records, stmt;
+(async function main(){
+    let connection = new Database("database-js-sqlite:///test.sqlite");
+    let statement, results;
+
     try {
-        stmt = await db.prepareStatement("SELECT * FROM states ORDER BY State ASC");
-        records = await stmt.query();
-        console.log(JSON.stringify(records, null, 4));
-        await db.close();
-        setTimeout(process.exit, 0);
+        statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
+        results = await statement.execute2('South Dakota');
+        console.log(results);
     } catch (err) {
         console.log(err);
-        setTimeout(process.exit, 0);
+    } finally {
+        connection.close();
     }
 })();
