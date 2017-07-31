@@ -1,4 +1,7 @@
 var Database = require('.').Connection;
+var args = process.argv.slice(2);
+
+if (args.length < 1) { args.push('South Dakota'); }
 
 (async function main(){
     let connection = new Database("database-js-sqlite:///test.sqlite");
@@ -6,11 +9,11 @@ var Database = require('.').Connection;
 
     try {
         statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
-        results = await statement.execute2('South Dakota');
+        results = await statement.query(args[0]);
         console.log(results);
     } catch (err) {
         console.log(err);
     } finally {
-        connection.close();
+        await connection.close();
     }
 })();
