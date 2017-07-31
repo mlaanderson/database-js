@@ -4,6 +4,8 @@ Common Database Interface for Node
 ## About
 Database-js creates the structure for a common database interface. It's roughly structured on Java's database interface. It has built in prepared statements, even if the underlying driver does not support them. It is built on Promises so it works well with ES7 async code.
 
+Some of the drivers may be using ES7 async code, but this package is ES6 compatible.
+
 ## Example
 Functional examples can be found in the [examples directory](https://github.com/mlaanderson/database-js/tree/master/examples)
 
