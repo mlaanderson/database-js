@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "database-js-mysql": "^1.0.1",
-    "database-js2": "^0.2.0"
+    "database-js2": "^1.0.2"
   }
 }

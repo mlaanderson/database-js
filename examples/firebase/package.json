@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "database-js-firebase": "^1.1.1",
-    "database-js2": "^0.1.5"
+    "database-js2": "^1.0.2"
   }
 }
