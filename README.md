@@ -6,6 +6,16 @@ Database-js creates the structure for a common database interface. It's roughly 
 
 Some of the drivers may be using ES7 async code, but this package is ES6 compatible.
 
+## Browserify
+To use database-js in the browser, require the driver manually and pass it as a second argument to the Connection. This causes database-js to ignore the driver in the connection URL. This can be useful during driver development.
+
+~~~~
+var Database = require('database-js2').Connection;
+var firebaseDriver = require('database-js-firebase');
+
+var connection = new Database('database-js-firebase://user@example.com:password@statesdemo/ewJviY6wboTKJ57A2dZkvq8kxYo1?apiKey=AIzaSyD1ypTmnJb_d8ZOyfc-KBMe0tw8owYCwjA', firebaseDriver);
+~~~~
+
 ## Example
 Functional examples can be found in the [examples directory](https://github.com/mlaanderson/database-js/tree/master/examples)
 
