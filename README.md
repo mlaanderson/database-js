@@ -6,8 +6,28 @@ Database-js creates the structure for a common database interface. It's roughly 
 
 Some of the drivers may be using ES7 async code, but this package is ES6 compatible.
 
+## New in 1.2.x
+Connection pools are now available, but should be considered beta. Two types of connection pools are available, static and dynamic. Static pools share a common pooling mechanism keyed to the connection URL. Thus creating a new StaticPool with the same URL forces it to share connections with existing pools that have the same connection URL. Dynamic pools do not share the pooling mechanism, so creating a new DynamicPool always allocates new connections.
+
+Drivers that need special handling for use in a pool can implement a static pool function which is called after instantiating the pooled connection.
+
+~~~~
+var Pool = require('database-js2').StaticPool; 
+
+var pool = new Pool('database-js-mysql://my_secret_username:my_secret_password@localhost:3306/my_top_secret_database');
+var connection = pool.getConnection();
+
+...
+
+await connection.close(); // just releases the connection to the pool
+
+...
+
+await pool.close(); // actually closes all the connections and empties the pool
+~~~~
+
 ## Browserify
-To use database-js in the browser, require the driver manually and pass it as a second argument to the Connection. This causes database-js to ignore the driver in the connection URL. This can be useful during driver development.
+To use database-js in the browser, require the driver manually and pass it as a second argument to the Connection. This causes database-js to ignore the driver in the connection URL. This can also be useful during driver development.
 
 ~~~~
 var Database = require('database-js2').Connection;
