@@ -1,11 +1,13 @@
-var Database = require('.').Connection;
+var Pool = require('.').DynamicPool;
 var args = process.argv.slice(2);
 
 if (args.length < 1) { args.push('South Dakota'); }
 
 (async function main(){
-    let connection = new Database("database-js-sqlite:///test.sqlite");
+    let pool = new Pool("database-js-sqlite:///test.sqlite");
+    let connection = pool.getConnection();
     let statement, results;
+
 
     try {
         statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
@@ -14,6 +16,6 @@ if (args.length < 1) { args.push('South Dakota'); }
     } catch (err) {
         console.log(err);
     } finally {
-        await connection.close();
+        await pool.close();
     }
 })();

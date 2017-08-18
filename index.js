@@ -1,5 +1,9 @@
-var Connection = require('./lib/connection.js');
+var Connection = require('./lib/connection');
+var StaticPool = require('./lib/staticPool');
+var DynamicPool = require('./lib/dynamicPool');
 
 module.exports = {
-    Connection: Connection
+    Connection: Connection,
+    StaticPool: StaticPool,
+    DynamicPool: DynamicPool
 }
