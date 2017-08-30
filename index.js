@@ -7,5 +7,5 @@ module.exports = {
     Connection: Connection,
     StaticPool: StaticPool,
     DynamicPool: DynamicPool,
-    URLParse: ParseConnection
+    ParseConnection: ParseConnection
 }
