@@ -73,6 +73,8 @@ Since drivers must have a common interface, there are a few wrappers around driv
 Yes, it is an SQL wrapper for a NoSQL database.
 `database-js-firebase://username:password@project_id/root_node?apiKey=API_KEY`
 Where the root node is the path to the parent of the entries you define as tables. The project ID and API key can get found in your Firebase console.
+#### [INI](https://github.com/mlaanderson/database-js-ini)
+An SQL wrapper for an INI file. Tables are constructed from sections. By definition, each table will only have one row.
 
 ### Usage
 #### MySQL Example
