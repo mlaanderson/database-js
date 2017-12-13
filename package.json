@@ -11,7 +11,14 @@
     "url": "git+https://github.com/mlaanderson/database-js.git"
   },
   "keywords": [
-    "Database"
+    "database",
+    "javascript",
+    "adodb",
+    "firebase",
+    "ini",
+    "mysql",
+    "postgres",
+    "sqlite"
   ],
   "author": "Michael Anderson <michael@anderson-clan.org>",
   "license": "MIT",
