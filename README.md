@@ -125,6 +125,6 @@ var Connection = require('database-js2').Connection;
 })();
 ```
 
-# Licence
+# License
 
 [MIT](https://github.com/mlaanderson/database-js/blob/master/LICENSE) (c) [mlaanderson](https://github.com/mlaanderson)
