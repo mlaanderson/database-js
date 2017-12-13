@@ -4,11 +4,9 @@ var args = process.argv.slice(2);
 if (args.length < 1) { args.push('South Dakota'); }
 
 (async function main(){
-    let pool = new Pool("database-js-sqlite:///test.sqlite");
+    let pool = new Pool("sqlite:///test.sqlite");
     let connection = pool.getConnection();
     let statement, results;
-
-
     try {
         statement = await connection.prepareStatement("SELECT * FROM states WHERE State = ?");
         results = await statement.query(args[0]);
