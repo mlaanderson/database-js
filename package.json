@@ -21,6 +21,10 @@
     "sqlite"
   ],
   "author": "Michael Anderson <michael@anderson-clan.org>",
+  "contributors": [
+    "Michael Anderson <michael@anderson-clan.org> (https://github.com/mlaanderson/)",
+    "Thiago Delgado Pinto (https://github.com/thiagodp)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mlaanderson/database-js/issues"
