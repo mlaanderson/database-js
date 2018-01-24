@@ -1,4 +1,5 @@
 # Database-js
+* [Install](#install)
 * [API](//github.com/mlaanderson/database-js/wiki/API)
 * [Examples](//github.com/mlaanderson/database-js/wiki/Examples)
 * [Drivers](//github.com/mlaanderson/database-js/wiki/Drivers)
@@ -25,7 +26,7 @@ Currently available drivers:
 - [Excel files](//github.com/mlaanderson/database-js-xlsx)
 - [CSV files](//github.com/mlaanderson/database-js-csv)
 
-[See here](https://github.com/mlaanderson/database-js/wiki/Drivers) how to add a new driver.
+[See here](https://github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
 ## Install
 
