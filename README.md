@@ -13,15 +13,29 @@ Since database-js is still being held onto by NPM, the package name is database-
 
 Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
 
-# Install
+## Drivers
+
+Currently available drivers:
+- [MySQL](//github.com/mlaanderson/database-js-mysql)
+- [PostgreSQL](//github.com/mlaanderson/database-js-postgresql)
+- [SQLite](//github.com/mlaanderson/database-js-sqlite)
+- [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb)
+- [Firebase](//github.com/mlaanderson/database-js-firebase)
+- [INI files](//github.com/mlaanderson/database-js-ini)
+- [Excel files](//github.com/mlaanderson/database-js-xlsx)
+- [CSV files](//github.com/mlaanderson/database-js-csv)
+
+[See here](https://github.com/mlaanderson/database-js/wiki/Drivers) how to add a new driver.
+
+## Install
 
 ```shell
 npm install database-js2
 ```
 
-# Usage
+## Usage
 
-## SQLite
+### SQLite
 ```javascript
 var Connection = require('database-js2').Connection;
 
@@ -47,7 +61,7 @@ statement.query("South Dakota").then((results) => {
 });
 ```
 
-## MySQL
+### MySQL
 ```javascript
 var Connection = require('database-js2').Connection;
 
@@ -73,7 +87,7 @@ statement.query("South Dakota").then((results) => {
 });
 ```
 
-## PostgreSQL
+### PostgreSQL
 ```javascript
 var Connection = require('database-js2').Connection;
 
@@ -101,7 +115,7 @@ statement.query("South Dakota").then((results) => {
 
 Notice that in all three examples, the only difference is the connection URL.
 
-## ES7 Compatibility: async
+### ES7 Compatibility: async
 Because database-js is built on Promises, it works very well with ES7 async functions. Compare the following ES7 code to the SQLite code from above. They accomplish the same thing.
 ```javascript
 var Connection = require('database-js2').Connection;
@@ -125,6 +139,6 @@ var Connection = require('database-js2').Connection;
 })();
 ```
 
-# License
+## License
 
 [MIT](https://github.com/mlaanderson/database-js/blob/master/LICENSE) (c) [mlaanderson](https://github.com/mlaanderson)
