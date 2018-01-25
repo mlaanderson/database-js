@@ -1,5 +1,7 @@
 # Database-js
 
+[![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js)
+
 * [Install](#install)
 * [API](//github.com/mlaanderson/database-js/wiki/API)
 * [Examples](//github.com/mlaanderson/database-js/wiki/Examples)
@@ -7,6 +9,7 @@
 * [In the Browser](//github.com/mlaanderson/database-js/wiki/Browsers)
 
 ## About
+
 Database-js was started to implement a common, promise-based interface for SQL database access. The concept is to copy the Java pattern of using connection strings to identify the driver. Then provide wrappers around the implemented functionality to commonize the syntax and results.
 
 Thus if SQLite, MySQL and PostgreSQL all have a database named test with a table named states we can access the data the same way.
