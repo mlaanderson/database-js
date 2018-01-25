@@ -35,6 +35,7 @@
     "database-js-adodb": "^1.0.0",
     "database-js-firebase": "^1.0.0",
     "database-js-ini": "git+https://github.com/mlaanderson/database-js-ini.git",
+    "database-js-json": "^1.0.0",
     "database-js-mysql": "^1.0.0",
     "database-js-postgres": "^1.0.0",
     "database-js-sqlite": "^1.0.3"
