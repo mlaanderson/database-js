@@ -1,9 +1,10 @@
+/* jshint ignore: start */
 var Pool = require('.').DynamicPool;
 var args = process.argv.slice(2);
 
 if (args.length < 1) { args.push('South Dakota'); }
 
-(async function main(){
+( async () => {
     let pool = new Pool("sqlite:///test.sqlite");
     let connection = pool.getConnection();
     let statement, results;
@@ -16,4 +17,5 @@ if (args.length < 1) { args.push('South Dakota'); }
     } finally {
         await pool.close();
     }
-})();
+} )();
+/* jshint ignore: end */
