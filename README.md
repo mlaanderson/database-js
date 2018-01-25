@@ -26,6 +26,7 @@ Currently available drivers:
 - [INI files](//github.com/mlaanderson/database-js-ini)
 - [Excel files](//github.com/mlaanderson/database-js-xlsx)
 - [CSV files](//github.com/mlaanderson/database-js-csv)
+- [JSON files](//github.com/thiagodp/database-js-json)
 
 [See here](https://github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
