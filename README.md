@@ -14,8 +14,6 @@ Database-js was started to implement a common, promise-based interface for SQL d
 
 Thus if SQLite, MySQL and PostgreSQL all have a database named test with a table named states we can access the data the same way.
 
-Since *database-js* is still being held onto by NPM, the current package name is **database-js2**.
-
 Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
 
 ## Drivers
@@ -36,14 +34,14 @@ Currently available drivers:
 ## Install
 
 ```shell
-npm install database-js2
+npm install database-js
 ```
 
 ## Usage
 
 ### SQLite
 ```javascript
-var Connection = require('database-js2').Connection;
+var Connection = require('database-js').Connection;
 
 var conn = new Connection("sqlite:///path/to/test.sqlite");
 
@@ -69,7 +67,7 @@ statement.query("South Dakota").then((results) => {
 
 ### MySQL
 ```javascript
-var Connection = require('database-js2').Connection;
+var Connection = require('database-js').Connection;
 
 var conn = new Connection("mysql://user:password@localhost/test");
 
@@ -95,7 +93,7 @@ statement.query("South Dakota").then((results) => {
 
 ### PostgreSQL
 ```javascript
-var Connection = require('database-js2').Connection;
+var Connection = require('database-js').Connection;
 
 var conn = new Connection("postgres://user:password@localhost/test");
 
@@ -124,7 +122,7 @@ Notice that in all three examples, the only difference is the connection URL.
 ### ES7 Compatibility: async
 Because database-js is built on Promises, it works very well with ES7 async functions. Compare the following ES7 code to the SQLite code from above. They accomplish the same thing.
 ```javascript
-var Connection = require('database-js2').Connection;
+var Connection = require('database-js').Connection;
 
 (async function() {
     let conn, statement, results;
