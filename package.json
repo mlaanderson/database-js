@@ -1,5 +1,5 @@
 {
-  "name": "database-js2",
+  "name": "database-js",
   "version": "3.0.0",
   "description": "Common Database Interface",
   "main": "index.js",
