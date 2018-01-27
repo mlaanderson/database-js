@@ -20,7 +20,7 @@ Database-js has built-in prepared statements, even if the underlying driver does
 
 Currently available drivers:
 - [MySQL](//github.com/mlaanderson/database-js-mysql)
-- [PostgreSQL](//github.com/mlaanderson/database-js-postgresql)
+- [PostgreSQL](//github.com/mlaanderson/database-js-postgres)
 - [SQLite](//github.com/mlaanderson/database-js-sqlite)
 - [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb)
 - [Firebase](//github.com/mlaanderson/database-js-firebase)
