@@ -25,8 +25,8 @@
     "database",
     "db",
     "sql",
-    "query,
-    "driver,
+    "query",
+    "driver",
     "mysql",
     "postgre",
     "postgres",
@@ -39,7 +39,7 @@
     "xls",
     "xlsx",
     "csv",
-    "json
+    "json"
   ],
   "author": "Michael Anderson <michael@anderson-clan.org>",
   "contributors": [
