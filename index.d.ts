@@ -62,8 +62,8 @@ declare class PreparedStatement extends Statement {}
 declare class Connection {
     constructor(url: string | ConnectionStruct, driver?: any);
 
-    get URL(): string;
-    get Driver(): Object;
+    readonly URL: string;
+    readonly Driver: Object;
     
     /**
      * Creates a statement with the passed SQL.
