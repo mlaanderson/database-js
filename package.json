@@ -1,6 +1,6 @@
 {
   "name": "database-js",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Common Database Interface",
   "main": "index.js",
   "scripts": {
