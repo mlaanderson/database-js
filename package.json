@@ -1,6 +1,6 @@
 {
   "name": "database-js",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Common Database Interface",
   "main": "index.js",
   "scripts": {
@@ -32,9 +32,9 @@
     "postgres",
     "postgresql",
     "sqlite",
-    "ado",    
+    "ado",
     "adodb",
-    "firebase",    
+    "firebase",
     "ini",
     "xls",
     "xlsx",
