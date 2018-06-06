@@ -25,7 +25,7 @@ declare class  ConnectionObject {
     makeURL() : string;
 
     /** Allows plain object to be used to construct a ConnectionObject */
-    static fromPlain(obj: ConnectionStruct, driver?: any);
+    static fromPlain(obj: ConnectionStruct, driver?: any): ConnectionObject;
 }
 
 declare class Statement {
@@ -62,8 +62,8 @@ declare class PreparedStatement extends Statement {}
 declare class Connection {
     constructor(url: string | ConnectionStruct, driver?: any);
 
-    readonly get URL(): string;
-    readonly get Driver(): Object;
+    get URL(): string;
+    get Driver(): Object;
     
     /**
      * Creates a statement with the passed SQL.
@@ -149,7 +149,7 @@ declare class PooledConnection extends Connection {
      * @returns {Promise<boolean>}
      * @memberof PooledConnection
      */
-    kill() : Promse<boolean>;
+    kill() : Promise<boolean>;
 
     /**
      * Frees this connection for the pool
@@ -211,7 +211,7 @@ declare interface Pool {
 }
 
 declare class StaticPool implements Pool {
-    constructor(url: string | ConnectionObject, poolSize: number = 10, driver?: any);
+    constructor(url: string | ConnectionObject, poolSize: number, driver?: any);
     
     /**
      * The number of used connections in the pool
@@ -263,7 +263,7 @@ declare class StaticPool implements Pool {
 }
 
 declare class DynamicPool implements Pool {
-    constructor(url: string | ConnectionObject, poolSize: number = 10, driver?: any);
+    constructor(url: string | ConnectionObject, poolSize: number, driver?: any);
     
     /**
      * The number of used connections in the pool
