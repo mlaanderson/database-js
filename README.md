@@ -1,22 +1,31 @@
-# Database-js
+# database-js
 
 [![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js) 
 [![npm version](https://badge.fury.io/js/database-js.svg)](https://badge.fury.io/js/database-js) 
 [![Mentioned in Awesome Node.js](https://awesome.re/mentioned-badge.svg)](https://github.com/sindresorhus/awesome-nodejs)
 
-* [Install](#install)
-* [API](//github.com/mlaanderson/database-js/wiki/API)
-* [Examples](//github.com/mlaanderson/database-js/wiki/Examples)
-* [Drivers](//github.com/mlaanderson/database-js/wiki/Drivers)
-* [In the Browser](//github.com/mlaanderson/database-js/wiki/Browsers)
-
-## About
+> Wrapper for multiple databases with a JDBC-like connection
 
 Database-js was started to implement a common, promise-based interface for SQL database access. The concept is to copy the Java pattern of using connection strings to identify the driver. Then provide wrappers around the implemented functionality to commonize the syntax and results.
 
 Thus if SQLite, MySQL and PostgreSQL all have a database named test with a table named states we can access the data the same way.
 
 Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
+
+## Contents
+
+* [Install](#install)
+* [Usage](#usage)
+* [Examples](//github.com/mlaanderson/database-js/wiki/Examples)
+* [API](//github.com/mlaanderson/database-js/wiki/API)
+* [Drivers](//github.com/mlaanderson/database-js/wiki/Drivers)
+* [In the Browser](//github.com/mlaanderson/database-js/wiki/Browsers)
+
+## Install
+
+```shell
+npm install database-js
+```
 
 ## Drivers
 
@@ -33,12 +42,6 @@ Currently available drivers:
 
 [See here](https://github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
-## Install
-
-```shell
-npm install database-js
-```
-
 ## Usage
 
 ```javascript
@@ -49,7 +52,7 @@ var conn =
 	new Connection("sqlite:///path/to/test.sqlite"); // SQLite
 	// new Connection("mysql://user:password@localhost/test"); // MySQL
 	// new Connection("postgres://user:password@localhost/test"); // PostgreSQL
-	// another database here (see the drivers)
+	// new Connection( < ANOTHER URL HERE > ); // see the drivers
 
 var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
 statement.query("South Dakota")
@@ -77,6 +80,7 @@ statement.query("South Dakota")
 ```
 
 ### Async / await
+
 Because **database-js** is built on Promises, it works very well with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function). Compare the following code to the code from above. They accomplish the same thing.
 ```javascript
 var Connection = require('database-js').Connection;
