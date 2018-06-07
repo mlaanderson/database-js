@@ -1,6 +1,8 @@
 # Database-js
 
-[![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js)
+[![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js) 
+[![npm version](https://badge.fury.io/js/database-js.svg)](https://badge.fury.io/js/database-js) 
+[![Mentioned in Awesome Node.js](https://awesome.re/mentioned-badge.svg)](https://github.com/sindresorhus/awesome-nodejs)
 
 * [Install](#install)
 * [API](//github.com/mlaanderson/database-js/wiki/API)
@@ -39,96 +41,50 @@ npm install database-js
 
 ## Usage
 
-### SQLite
 ```javascript
 var Connection = require('database-js').Connection;
 
-var conn = new Connection("sqlite:///path/to/test.sqlite");
+// 👉 Change the connection URL according to the database you need to connect
+var conn =
+	new Connection("sqlite:///path/to/test.sqlite"); // SQLite
+	// new Connection("mysql://user:password@localhost/test"); // MySQL
+	// new Connection("postgres://user:password@localhost/test"); // PostgreSQL
+	// another database here (see the drivers)
 
 var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
-statement.query("South Dakota").then((results) => {
+statement.query("South Dakota")
+  .then((results) => {
+    // Display the results
     console.log(results);
-    conn.close().then(() => {
-        process.exit(0);
-    }).catch((reason) => {
-        console.log(reason);
+	// Close the database connection
+    conn.close()
+	  .then(() => {
+        process.exit(0); // Bye!
+      }).catch((reason) => {
+        console.log(reason); // Some problem when closing the connection
         process.exit(1);
-    });
-}).catch((reason) => {
-    console.log(reaons);
+      });
+  }).catch((reason) => {
+    console.log(reason); // Some problem while performing the query
+	// Close the connection
     conn.close().then(() => {
-        process.exit(0);
+      process.exit(0); // Bye!
     }).catch((reason) => {
-        console.log(reason);
-        process.exit(1);
+      console.log(reason); // Some problem when closing the connection
+      process.exit(1);
     });
-});
+  });
 ```
 
-### MySQL
-```javascript
-var Connection = require('database-js').Connection;
-
-var conn = new Connection("mysql://user:password@localhost/test");
-
-var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
-statement.query("South Dakota").then((results) => {
-    console.log(results);
-    conn.close().then(() => {
-        process.exit(0);
-    }).catch((reason) => {
-        console.log(reason);
-        process.exit(1);
-    });
-}).catch((reason) => {
-    console.log(reaons);
-    conn.close().then(() => {
-        process.exit(0);
-    }).catch((reason) => {
-        console.log(reason);
-        process.exit(1);
-    });
-});
-```
-
-### PostgreSQL
-```javascript
-var Connection = require('database-js').Connection;
-
-var conn = new Connection("postgres://user:password@localhost/test");
-
-var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
-statement.query("South Dakota").then((results) => {
-    console.log(results);
-    conn.close().then(() => {
-        process.exit(0);
-    }).catch((reason) => {
-        console.log(reason);
-        process.exit(1);
-    });
-}).catch((reason) => {
-    console.log(reaons);
-    conn.close().then(() => {
-        process.exit(0);
-    }).catch((reason) => {
-        console.log(reason);
-        process.exit(1);
-    });
-});
-```
-
-Notice that in all three examples, the only difference is the connection URL.
-
-### ES7 Compatibility: async
-Because database-js is built on Promises, it works very well with ES7 async functions. Compare the following ES7 code to the SQLite code from above. They accomplish the same thing.
+### Async / await
+Because **database-js** is built on Promises, it works very well with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function). Compare the following code to the code from above. They accomplish the same thing.
 ```javascript
 var Connection = require('database-js').Connection;
 
 (async function() {
     let conn, statement, results;
-    
     try {
-        conn = new Connection("sqlite:///path/to/test.sqlite");
+        conn = new Connection("sqlite:///path/to/test.sqlite"); // Just change the connection URL for a different database
         statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
         results = await statement.query("South Dakota");
         console.log(results);
@@ -143,6 +99,10 @@ var Connection = require('database-js').Connection;
 })();
 ```
 
+## See also
+
+[codeceptjs-dbhelper](https://github.com/thiagodp/codeceptjs-dbhelper) - Allows to use [database-js](https://github.com/mlaanderson/database-js) inside [CodeceptJS](https://github.com/codeception/codeceptjs/) to setup tests that access databases.
+
 ## License
 
-[MIT](https://github.com/mlaanderson/database-js/blob/master/LICENSE) (c) [mlaanderson](https://github.com/mlaanderson)
+[MIT](https://github.com/mlaanderson/database-js/blob/master/LICENSE)
