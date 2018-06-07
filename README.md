@@ -56,27 +56,25 @@ var conn =
 
 var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
 statement.query("South Dakota")
-  .then((results) => {
-    // Display the results
-    console.log(results);
-	// Close the database connection
-    conn.close()
-	  .then(() => {
-        process.exit(0); // Bye!
-      }).catch((reason) => {
-        console.log(reason); // Some problem when closing the connection
-        process.exit(1);
-      });
-  }).catch((reason) => {
-    console.log(reason); // Some problem while performing the query
-	// Close the connection
-    conn.close().then(() => {
-      process.exit(0); // Bye!
-    }).catch((reason) => {
-      console.log(reason); // Some problem when closing the connection
-      process.exit(1);
-    });
-  });
+	.then((results) => {
+		console.log(results); // Display the results
+		conn.close() // Close the database connection
+			.then(() => {
+				process.exit(0); // Success!
+			}).catch((reason) => {
+				console.log(reason); // Some problem when closing the connection
+				process.exit(1);
+			});
+	}).catch((reason) => {
+		console.log(reason); // Some problem while performing the query
+		conn.close() // Close the connection
+			.then(() => {
+				process.exit(0); // Success!
+			}).catch((reason) => {
+				console.log(reason); // Some problem when closing the connection
+				process.exit(1);
+			});
+	});
 ```
 
 ### Async / await
