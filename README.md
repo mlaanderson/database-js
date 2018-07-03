@@ -30,17 +30,18 @@ npm install database-js
 ## Drivers
 
 Currently available drivers:
-- [MySQL](//github.com/mlaanderson/database-js-mysql)
-- [PostgreSQL](//github.com/mlaanderson/database-js-postgres)
-- [SQLite](//github.com/mlaanderson/database-js-sqlite)
-- [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb)
+- [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb) - *Windows only*
+- [CSV files](//github.com/mlaanderson/database-js-csv)
+- [Excel files](//github.com/mlaanderson/database-js-xlsx)
 - [Firebase](//github.com/mlaanderson/database-js-firebase)
 - [INI files](//github.com/mlaanderson/database-js-ini)
-- [Excel files](//github.com/mlaanderson/database-js-xlsx)
-- [CSV files](//github.com/mlaanderson/database-js-csv)
 - [JSON files](//github.com/thiagodp/database-js-json)
+- [MySQL](//github.com/mlaanderson/database-js-mysql)
+- [MS SQL Server](https://github.com/thiagodp/database-js-mssql)
+- [PostgreSQL](//github.com/mlaanderson/database-js-postgres)
+- [SQLite](//github.com/mlaanderson/database-js-sqlite)
 
-[See here](https://github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
+[See here](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
 ## Usage
 
@@ -107,4 +108,4 @@ var Connection = require('database-js').Connection;
 
 ## License
 
-[MIT](https://github.com/mlaanderson/database-js/blob/master/LICENSE)
+[MIT](LICENSE)
