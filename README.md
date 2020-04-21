@@ -6,7 +6,7 @@
 
 > Wrapper for multiple databases with a JDBC-like connection
 
-Database-js implements a common, promise-based interface for SQL database access. Inspired by Java, it adopts the pattern of using connection strings to identify the database driver. Wrappers around native database drivers provide a unified interface to handle databases. Thus, you don't need to modify your code (except the connection string) to change your database! 😉
+Database-js implements a common, promise-based interface for SQL database access. Inspired by Java, it uses connection strings to identify the database driver. Wrappers around native database drivers provide a unified interface to handle databases. Thus, you don't need to modify your code (except the connection string) to change your database! 😉
 
 Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
 
@@ -27,17 +27,18 @@ npm install database-js
 
 ## Drivers
 
-Currently available drivers (*wrappers*):
-- [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb) - *Windows only*
-- [CSV files](//github.com/mlaanderson/database-js-csv)
-- [Excel files](//github.com/mlaanderson/database-js-xlsx)
-- [Firebase](//github.com/mlaanderson/database-js-firebase)
-- [INI files](//github.com/mlaanderson/database-js-ini)
-- [JSON files](//github.com/thiagodp/database-js-json)
-- [MySQL](//github.com/mlaanderson/database-js-mysql)
-- [MS SQL Server](https://github.com/thiagodp/database-js-mssql)
-- [PostgreSQL](//github.com/mlaanderson/database-js-postgres)
-- [SQLite](//github.com/mlaanderson/database-js-sqlite)
+| Driver (wrapper) | Note | Installation |
+| ---------------- | ---- | ------------ |
+| [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb) | *Windows only* | `npm i database-js-adodb` |
+| [CSV files](//github.com/mlaanderson/database-js-csv) | | `npm i database-js-csv` |
+| [Excel files](//github.com/mlaanderson/database-js-xlsx) | | `npm i database-js-xlsx` |
+| [Firebase](//github.com/mlaanderson/database-js-firebase) | | `npm i database-js-firebase` |
+| [INI files](//github.com/mlaanderson/database-js-ini) | | `npm i database-js-ini` |
+| [JSON files](//github.com/thiagodp/database-js-json) | | `npm i database-js-json` |
+| [MySQL](//github.com/mlaanderson/database-js-mysql) | | `npm i database-js-mysql` |
+| [MS SQL Server](https://github.com/thiagodp/database-js-mssql) | | `npm i database-js-mssql` |
+| [PostgreSQL](//github.com/mlaanderson/database-js-postgres) | | `npm i database-js-postgres` |
+| [SQLite](//github.com/mlaanderson/database-js-sqlite) | | `npm i database-js-sqlite` |
 
 [See here](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
