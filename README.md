@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js)
 [![npm version](https://badge.fury.io/js/database-js.svg)](https://badge.fury.io/js/database-js)
 [![Mentioned in Awesome Node.js](https://awesome.re/mentioned-badge.svg)](https://github.com/sindresorhus/awesome-nodejs)
+![downloads](https://img.shields.io/npm/dw/database-js)
 
 > Wrapper for multiple databases with a JDBC-like connection
 
@@ -103,7 +104,7 @@ var Connection = require('database-js').Connection;
 
 ## See also
 
-[codeceptjs-dbhelper](https://github.com/thiagodp/codeceptjs-dbhelper) - Allows to use [database-js](https://github.com/mlaanderson/database-js) inside [CodeceptJS](https://github.com/codeception/codeceptjs/) to setup tests that access databases.
+[codeceptjs-dbhelper](https://github.com/thiagodp/codeceptjs-dbhelper) - Allows to use [database-js](https://github.com/mlaanderson/database-js) inside [CodeceptJS](https://github.com/codeception/codeceptjs/) tests (as a helper).
 
 ## License
 
