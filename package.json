@@ -1,10 +1,10 @@
 {
   "name": "database-js",
   "version": "3.0.10",
-  "description": "Common Database Interface",
+  "description": "Common database interface for JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "echo \"Automated tests will be added soon.\""
   },
   "repository": {
     "type": "git",
@@ -50,5 +50,5 @@
   "bugs": {
     "url": "https://github.com/mlaanderson/database-js/issues"
   },
-  "homepage": "https://github.com/mlaanderson/database-js#readme"
+  "homepage": "https://github.com/mlaanderson/database-js"
 }
