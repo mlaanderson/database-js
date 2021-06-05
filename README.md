@@ -50,9 +50,9 @@ var Connection = require('database-js').Connection;
 
 // CONNECTION
 var conn =
-	new Connection("sqlite:///path/to/test.sqlite");				// SQLite
-	// new Connection("mysql://user:password@localhost/test");		// MySQL
-	// new Connection("postgres://user:password@localhost/test");	// PostgreSQL
+	new Connection("sqlite:///path/to/test.sqlite");               // SQLite
+	// new Connection("mysql://user:password@localhost/test");     // MySQL
+	// new Connection("postgres://user:password@localhost/test");  // PostgreSQL
 	// 👉 Change the connection string according to the database driver
 
 // QUERY
@@ -89,33 +89,32 @@ Because **database-js** is built on Promises, it works very well with [async/awa
 const Connection = require('database-js').Connection;
 
 (async () => {
-    let conn;
-    try {
+	let conn;
+	try {
 		// CONNECTION
-        conn = new Connection("mysql://user:password@localhost/test");
+		conn = new Connection('mysql://user:password@localhost/test');
 
 		// QUERY
-		const stmt1 = conn.prepareStatement("SELECT * FROM city WHERE name = ?");
-        const results = await stmt1.query("New York");
-        console.log(results);
+		const stmt1 = conn.prepareStatement('SELECT * FROM city WHERE name = ?');
+		const results = await stmt1.query('New York');
+		console.log(results);
 
 		// COMMAND 1
-		const stmt2 = conn.prepareStatement("INSERT INTO city (name, population) VALUES (?,?)");
-        await stmt1.execute("Rio de Janeiro", 6747815);
+		const stmt2 = conn.prepareStatement('INSERT INTO city (name, population) VALUES (?,?)');
+		await stmt1.execute('Rio de Janeiro', 6747815);
 
 		// COMMAND 2
-		const stmt2 = conn.prepareStatement("UPDATE city SET population = population + ? WHERE name = ?");
-        await stmt1.execute(1, "Rio de Janeiro");
-
-    } catch (reason) {
-        console.log(reason);
-    } finally {
+		const stmt2 = conn.prepareStatement('UPDATE city SET population = population + ? WHERE name = ?');
+		await stmt1.execute(1, 'Rio de Janeiro');
+	} catch (reason) {
+		console.log(reason);
+	} finally {
 		try {
 			await conn.close();
 		} catch (err) {
 			console.log(err);
 		}
-    }
+	}
 })();
 ```
 
@@ -127,10 +126,10 @@ See the source code for the full API.
 class Connection {
 
 	/** Creates and prepares a statement with the given SQL. */
-    prepareStatement(sql: string): PreparedStatement;
+	prepareStatement(sql: string): PreparedStatement;
 
-    /** Closes the underlying connection. */
-    close(): Promise<void>;
+	/** Closes the underlying connection. */
+	close(): Promise<void>;
 
 	/** Indicates whether the underlying driver support transactions. */
 	isTransactionSupported(): boolean;
@@ -157,7 +156,7 @@ class Connection {
 	/**
 	 * Cancels a transaction (if supported).
 	 *
-     * Transaction can fail to be rolled back no transaction was started, or if the driver
+	 * Transaction can fail to be rolled back no transaction was started, or if the driver
 	 * does not support transactions.
 	 */
 	rollback(): Promise<boolean>;
@@ -166,11 +165,11 @@ class Connection {
 
 ```ts
 class PreparedStatement {
-    /**
+	/**
 	 * Performs the prepared SQL query with the given arguments.
 	 * Returns a Promise with an array of rows.
 	 */
-    query(...args: any): Promise<Array<any>>;
+	query(...args: any): Promise<Array<any>>;
 
 	/** Executes the prepared SQL statement with the given arguments. */
 	execute(... args): Promise<any>;
