@@ -48,63 +48,142 @@ npm install database-js
 ```javascript
 var Connection = require('database-js').Connection;
 
-// 👉 Change the connection URL according to the database you need to connect
+// CONNECTION
 var conn =
-	new Connection("sqlite:///path/to/test.sqlite"); // SQLite
-	// new Connection("mysql://user:password@localhost/test"); // MySQL
-	// new Connection("postgres://user:password@localhost/test"); // PostgreSQL
-	// new Connection( < ANOTHER URL HERE > ); // see the drivers
+	new Connection("sqlite:///path/to/test.sqlite");				// SQLite
+	// new Connection("mysql://user:password@localhost/test");		// MySQL
+	// new Connection("postgres://user:password@localhost/test");	// PostgreSQL
+	// 👉 Change the connection string according to the database driver
 
-var statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
-statement.query("South Dakota")
-	.then((results) => {
+// QUERY
+var stmt1 = conn.prepareStatement("SELECT * FROM city WHERE name = ?");
+stmt1.query("New York")
+	.then( function (results) {
 		console.log(results); // Display the results
-		conn.close() // Close the database connection
-			.then(() => {
-				process.exit(0); // Success!
-			}).catch((reason) => {
-				console.log(reason); // Some problem when closing the connection
-				process.exit(1);
-			});
-	}).catch((reason) => {
+	} ).catch( function (reason) {
 		console.log(reason); // Some problem while performing the query
-		conn.close() // Close the connection
-			.then(() => {
-				process.exit(0); // Success!
-			}).catch((reason) => {
-				console.log(reason); // Some problem when closing the connection
-				process.exit(1);
-			});
-	});
+	} );
+
+// COMMAND
+var stmt2 = conn.prepareStatement("INSERT INTO city (name, population) VALUES (?, ?)");
+stmt2.execute("Rio de Janeiro", 6747815)
+	.then( function() { console.log( 'Inserted.' ); } )
+	.catch( function(reason) { console.log('Error: ' + reason); } );
+
+// ANOTHER COMMAND
+var stmt3 = conn.prepareStatement("UPDATE city SET population = population + ? WHERE name = ?");
+stmt3.execute(1, "Rio de Janeiro")
+	.then( function() { console.log( 'Updated.' ); } )
+	.catch( function(reason) { console.log('Error: ' + reason); } );
+
+// CLOSING THE CONNECTION
+conn.close()
+	.then( function() { console.log('Closed.'); } )
+	.catch( function(reason) { console.log('Error: ' + reason); } );
 ```
 
 ### Async / await
 
 Because **database-js** is built on Promises, it works very well with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function). Compare the following code to the code from above. They accomplish the same thing.
 ```javascript
-var Connection = require('database-js').Connection;
+const Connection = require('database-js').Connection;
 
-(async function() {
-    let conn, statement, results;
+(async () => {
+    let conn;
     try {
-        conn = new Connection("sqlite:///path/to/test.sqlite"); // Just change the connection URL for a different database
-        statement = conn.prepareStatement("SELECT * FROM states WHERE state = ?");
-        results = await statement.query("South Dakota");
+		// CONNECTION
+        conn = new Connection("mysql://user:password@localhost/test");
+
+		// QUERY
+		const stmt1 = conn.prepareStatement("SELECT * FROM city WHERE name = ?");
+        const results = await stmt1.query("New York");
         console.log(results);
+
+		// COMMAND 1
+		const stmt2 = conn.prepareStatement("INSERT INTO city (name, population) VALUES (?,?)");
+        await stmt1.execute("Rio de Janeiro", 6747815);
+
+		// COMMAND 2
+		const stmt2 = conn.prepareStatement("UPDATE city SET population = population + ? WHERE name = ?");
+        await stmt1.execute(1, "Rio de Janeiro");
+
     } catch (reason) {
         console.log(reason);
     } finally {
-        if (conn) {
-            await conn.close();
-        }
-        process.exit(0);
+		try {
+			await conn.close();
+		} catch (err) {
+			console.log(err);
+		}
     }
 })();
 ```
 
+## Basic API
+
+See the source code for the full API.
+
+```ts
+class Connection {
+
+	/** Creates and prepares a statement with the given SQL. */
+    prepareStatement(sql: string): PreparedStatement;
+
+    /** Closes the underlying connection. */
+    close(): Promise<void>;
+
+	/** Indicates whether the underlying driver support transactions. */
+	isTransactionSupported(): boolean;
+
+	/** Returns true if the underlying driver is in a transaction, false otherwise. */
+	inTransaction(): boolean;
+
+	/**
+	 * Starts a transaction (if supported).
+	 *
+	 * Transactions can fail to start if another transaction is already running or
+	 * if the driver does not support transactions.
+	 */
+	beginTransaction(): Promise<boolean>;
+
+	/**
+	 * Commits a transaction (if supported).
+	 *
+	 * Transactions can fail to commit if no transaction was started, or if the driver
+	 * does not support transactions.
+	 */
+	commit(): Promise<boolean>;
+
+	/**
+	 * Cancels a transaction (if supported).
+	 *
+     * Transaction can fail to be rolled back no transaction was started, or if the driver
+	 * does not support transactions.
+	 */
+	rollback(): Promise<boolean>;
+}
+```
+
+```ts
+class PreparedStatement {
+    /**
+	 * Performs the prepared SQL query with the given arguments.
+	 * Returns a Promise with an array of rows.
+	 */
+    query(...args: any): Promise<Array<any>>;
+
+	/** Executes the prepared SQL statement with the given arguments. */
+	execute(... args): Promise<any>;
+}
+```
+
+
 ## See also
 
-[codeceptjs-dbhelper](https://github.com/thiagodp/codeceptjs-dbhelper) - Allows to use [database-js](https://github.com/mlaanderson/database-js) inside [CodeceptJS](https://github.com/codeception/codeceptjs/) tests (as a helper).
+- [Wiki](https://github.com/mlaanderson/database-js/wiki) for more examples and how to use a connection pool.
+
+- [codeceptjs-dbhelper](https://github.com/thiagodp/codeceptjs-dbhelper) - Allows to use [database-js](https://github.com/mlaanderson/database-js) inside [CodeceptJS](https://github.com/codeception/codeceptjs/) tests (as a helper).
+
 
 ## License
 
