@@ -7,7 +7,7 @@
 
 > Wrapper for multiple databases with a JDBC-like connection
 
-Database-js implements a common, promise-based interface for SQL database access. Inspired by Java, it uses connection strings to identify the database driver. Wrappers around native database drivers provide a unified interface to handle databases. Thus, you don't need to modify your code (except the connection string) to change your database! 😉
+Database-js implements a common, promise-based interface for SQL database access. Inspired by JDBC, it uses connection strings to identify the database driver. Wrappers around native database drivers provide a unified interface to handle databases. Thus, you can change the target database by modifying the connection string. 😉
 
 Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
 
@@ -36,7 +36,8 @@ npm install database-js
 | [Firebase](//github.com/mlaanderson/database-js-firebase) | | `npm i database-js-firebase` |
 | [INI files](//github.com/mlaanderson/database-js-ini) | | `npm i database-js-ini` |
 | [JSON files](//github.com/thiagodp/database-js-json) | | `npm i database-js-json` |
-| [MySQL](//github.com/mlaanderson/database-js-mysql) | | `npm i database-js-mysql` |
+| [MySQL](//github.com/mlaanderson/database-js-mysql) | prior to MySQL v8 | `npm i database-js-mysql` |
+| [MySQL2](//github.com/esteban-serfe/database-js-mysql2/) | MySQL v8+ | `npm i database-js-mysql2` |
 | [MS SQL Server](https://github.com/thiagodp/database-js-mssql) | | `npm i database-js-mssql` |
 | [PostgreSQL](//github.com/mlaanderson/database-js-postgres) | | `npm i database-js-postgres` |
 | [SQLite](//github.com/mlaanderson/database-js-sqlite) | | `npm i database-js-sqlite` |
@@ -44,6 +45,8 @@ npm install database-js
 [See here](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
 
 ## Usage
+
+Usage _without_ async/await:
 
 ```javascript
 var Connection = require('database-js').Connection;
@@ -84,7 +87,8 @@ conn.close()
 
 ### Async / await
 
-Because **database-js** is built on Promises, it works very well with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function). Compare the following code to the code from above. They accomplish the same thing.
+Using async/await:
+
 ```javascript
 const Connection = require('database-js').Connection;
 
@@ -119,8 +123,6 @@ const Connection = require('database-js').Connection;
 ```
 
 ## Basic API
-
-See the source code for the full API.
 
 ```ts
 class Connection {
