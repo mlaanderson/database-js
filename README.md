@@ -40,6 +40,7 @@ npm install database-js
 | [MySQL2](//github.com/esteban-serfe/database-js-mysql2/) | MySQL v8+ | `npm i database-js-mysql2` |
 | [MS SQL Server](https://github.com/thiagodp/database-js-mssql) | | `npm i database-js-mssql` |
 | [PostgreSQL](//github.com/mlaanderson/database-js-postgres) | | `npm i database-js-postgres` |
+| [SQLite3](//github.com/thiagodp/database-js-sqlite3) | | `npm i database-js-sqlite3` |
 | [SQLite](//github.com/mlaanderson/database-js-sqlite) | | `npm i database-js-sqlite` |
 
 [See here](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
