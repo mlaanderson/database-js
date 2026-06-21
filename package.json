@@ -2,14 +2,6 @@
   "name": "database-js",
   "version": "3.0.11",
   "description": "Common database interface for JavaScript",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Automated tests will be added soon.\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mlaanderson/database-js.git"
-  },
   "keywords": [
     "database-js",
     "database-js-mysql",
@@ -41,14 +33,27 @@
     "csv",
     "json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlaanderson/database-js.git"
+  },
   "author": "Michael Anderson <michael@anderson-clan.org>",
   "contributors": [
     "Michael Anderson <michael@anderson-clan.org> (https://github.com/mlaanderson/)",
     "Thiago Delgado Pinto (https://github.com/thiagodp)"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/mlaanderson/database-js",
   "bugs": {
     "url": "https://github.com/mlaanderson/database-js/issues"
   },
-  "homepage": "https://github.com/mlaanderson/database-js"
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "cov": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "4.1.8",
+    "vitest": "^4.1.8"
+  }
 }

@@ -1,15 +1,12 @@
 # database-js
 
-[![Build Status](https://travis-ci.org/mlaanderson/database-js.svg?branch=master)](https://travis-ci.org/mlaanderson/database-js)
 [![npm version](https://badge.fury.io/js/database-js.svg)](https://badge.fury.io/js/database-js)
 [![Mentioned in Awesome Node.js](https://awesome.re/mentioned-badge.svg)](https://github.com/sindresorhus/awesome-nodejs)
 ![downloads](https://img.shields.io/npm/dw/database-js)
 
 > Wrapper for multiple databases with a JDBC-like connection
 
-Database-js implements a common, promise-based interface for SQL database access. Inspired by JDBC, it uses connection strings to identify the database driver. Wrappers around native database drivers provide a unified interface to handle databases. Thus, you can change the target database by modifying the connection string. 😉
-
-Database-js has built-in prepared statements, even if the underlying driver does not support them. It is built on Promises, so it works well with ES7 async code.
+Database-js implements a common, promise-based interface for database access. Inspired by JDBC, it uses connection strings to identify a database driver. Wrappers around native database drivers provide a unified interface for handling databases and even files. The target database can be change by modifying the connection string. 😉
 
 ## Contents
 
@@ -23,113 +20,71 @@ Database-js has built-in prepared statements, even if the underlying driver does
 ## Install
 
 ```shell
-npm install database-js
+npm i database-js
 ```
+
+> Version 4 has a modern, ESM-based interface. Version 3 uses the legacy CommonJS-based interface.
 
 ## Drivers
 
-| Driver (wrapper) | Note | Installation |
-| ---------------- | ---- | ------------ |
-| [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb) | *Windows only* | `npm i database-js-adodb` |
-| [CSV files](//github.com/mlaanderson/database-js-csv) | | `npm i database-js-csv` |
-| [Excel files](//github.com/mlaanderson/database-js-xlsx) | | `npm i database-js-xlsx` |
-| [Firebase](//github.com/mlaanderson/database-js-firebase) | | `npm i database-js-firebase` |
-| [INI files](//github.com/mlaanderson/database-js-ini) | | `npm i database-js-ini` |
-| [JSON files](//github.com/thiagodp/database-js-json) | | `npm i database-js-json` |
-| [MySQL](//github.com/mlaanderson/database-js-mysql) | prior to MySQL v8 | `npm i database-js-mysql` |
-| [MySQL2](//github.com/esteban-serfe/database-js-mysql2/) | MySQL v8+ | `npm i database-js-mysql2` |
-| [MS SQL Server](https://github.com/thiagodp/database-js-mssql) | | `npm i database-js-mssql` |
-| [PostgreSQL](//github.com/mlaanderson/database-js-postgres) | | `npm i database-js-postgres` |
-| [SQLite3](//github.com/thiagodp/database-js-sqlite3) | | `npm i database-js-sqlite3` |
-| [SQLite](//github.com/mlaanderson/database-js-sqlite) | | `npm i database-js-sqlite` |
+| Driver (wrapper) | Note | Installation | Works with v3 | Works with v4 |
+| ---------------- | ---- | ------------ |--------------------|--------------------|
+| [ActiveX Data Objects](//github.com/mlaanderson/database-js-adodb) | *Windows only* | `npm i database-js-adodb` | Yes | Not checked yet |
+| [CSV files](//github.com/mlaanderson/database-js-csv) | | `npm i database-js-csv` | Yes | Not checked yet |
+| [Excel files](//github.com/mlaanderson/database-js-xlsx) | | `npm i database-js-xlsx` | Yes | Not checked yet |
+| [Firebase](//github.com/mlaanderson/database-js-firebase) | | `npm i database-js-firebase` | Yes | Not checked yet |
+| [INI files](//github.com/mlaanderson/database-js-ini) | | `npm i database-js-ini` | Yes | Not checked yet |
+| [JSON files](//github.com/thiagodp/database-js-json) | | `npm i database-js-json` | Yes | Not checked yet |
+| [MySQL](//github.com/mlaanderson/database-js-mysql) | prior to MySQL v8 | `npm i database-js-mysql` | Yes | Not checked yet |
+| [MySQL2](//github.com/esteban-serfe/database-js-mysql2/) | MySQL v8+ | `npm i database-js-mysql2` | Yes | Not checked yet |
+| [MS SQL Server](https://github.com/thiagodp/database-js-mssql) | | `npm i database-js-mssql` | Yes | Not checked yet |
+| [PostgreSQL](//github.com/mlaanderson/database-js-postgres) | | `npm i database-js-postgres` | Yes | Not checked yet |
+| [SQLite3](//github.com/thiagodp/database-js-sqlite3) | | `npm i database-js-sqlite3` | Yes | Not checked yet |
+| [SQLite](//github.com/mlaanderson/database-js-sqlite) | | `npm i database-js-sqlite` | Yes | Not checked yet |
 
-[See here](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver) how to add a new driver.
+See also [how to add a new driver](//github.com/mlaanderson/database-js/wiki/Drivers#implementing-a-new-driver).
 
 ## Usage
 
-Usage _without_ async/await:
+> Examples for version 4
 
 ```javascript
-var Connection = require('database-js').Connection;
+import { connect } from 'database-js';
 
-// CONNECTION
-var conn =
-	new Connection("sqlite:///path/to/test.sqlite");               // SQLite
-	// new Connection("mysql://user:password@localhost/test");     // MySQL
-	// new Connection("postgres://user:password@localhost/test");  // PostgreSQL
-	// 👉 Change the connection string according to the database driver
+let conn;
+try {
+	conn = await connect( 'mysql://user:password@localhost/exampledb' );
 
-// QUERY
-var stmt1 = conn.prepareStatement("SELECT * FROM city WHERE name = ?");
-stmt1.query("New York")
-	.then( function (results) {
-		console.log(results); // Display the results
-	} ).catch( function (reason) {
-		console.log(reason); // Some problem while performing the query
-	} );
+	const stmt1 = conn.prepareStatement( 'SELECT * FROM city WHERE name = ?' );
+	const results = await stmt1.query( 'New York' );
+	console.log( results );
 
-// COMMAND
-var stmt2 = conn.prepareStatement("INSERT INTO city (name, population) VALUES (?, ?)");
-stmt2.execute("Rio de Janeiro", 6747815)
-	.then( function() { console.log( 'Inserted.' ); } )
-	.catch( function(reason) { console.log('Error: ' + reason); } );
+	const stmt2 = conn.prepareStatement( 'INSERT INTO city (name, population) VALUES ( ?, ? )' );
+	await stmt2.execute( 'Rio de Janeiro', 6747815 );
 
-// ANOTHER COMMAND
-var stmt3 = conn.prepareStatement("UPDATE city SET population = population + ? WHERE name = ?");
-stmt3.execute(1, "Rio de Janeiro")
-	.then( function() { console.log( 'Updated.' ); } )
-	.catch( function(reason) { console.log('Error: ' + reason); } );
+	const stmt3 = conn.prepareStatement( 'UPDATE city SET population = population + ? WHERE name = ?' );
+	await stmt3.execute( 1, 'Rio de Janeiro' );
 
-// CLOSING THE CONNECTION
-conn.close()
-	.then( function() { console.log('Closed.'); } )
-	.catch( function(reason) { console.log('Error: ' + reason); } );
-```
-
-### Async / await
-
-Using async/await:
-
-```javascript
-const Connection = require('database-js').Connection;
-
-(async () => {
-	let conn;
+} catch ( error ) {
+	console.error( error.message );
+} finally {
 	try {
-		// CONNECTION
-		conn = new Connection('mysql://user:password@localhost/test');
-
-		// QUERY
-		const stmt1 = conn.prepareStatement('SELECT * FROM city WHERE name = ?');
-		const results = await stmt1.query('New York');
-		console.log(results);
-
-		// COMMAND 1
-		const stmt2 = conn.prepareStatement('INSERT INTO city (name, population) VALUES (?,?)');
-		await stmt1.execute('Rio de Janeiro', 6747815);
-
-		// COMMAND 2
-		const stmt2 = conn.prepareStatement('UPDATE city SET population = population + ? WHERE name = ?');
-		await stmt1.execute(1, 'Rio de Janeiro');
-	} catch (reason) {
-		console.log(reason);
-	} finally {
-		try {
-			await conn.close();
-		} catch (err) {
-			console.log(err);
-		}
+		await conn?.close();
+	} catch ( error ) {
+		console.error( error.message );
 	}
-})();
+}
 ```
 
-## Basic API
+## API
+
+> Version 4's basic API
 
 ```ts
 class Connection {
 
-	/** Creates and prepares a statement with the given SQL. */
-	prepareStatement(sql: string): PreparedStatement;
+	/** Creates a statement from the given SQL. */
+	prepareStatement(sql: string): Statement;
 
 	/** Closes the underlying connection. */
 	close(): Promise<void>;
@@ -167,7 +122,7 @@ class Connection {
 ```
 
 ```ts
-class PreparedStatement {
+class Statement {
 	/**
 	 * Performs the prepared SQL query with the given arguments.
 	 * Returns a Promise with an array of rows.
